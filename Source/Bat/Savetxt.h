@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "GameFramework/Actor.h"
 #include "Savetxt.generated.h"
 
 /**
@@ -18,7 +19,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Custom", meta = (Keywords = "SaveTxt"))
 
-		static bool SaveTxt(FString SaveTextB, FString FileNameB);
+		static void SaveTxt(FString SaveTextB, FString FileNameB);
 	GENERATED_BODY()
 	
 };
