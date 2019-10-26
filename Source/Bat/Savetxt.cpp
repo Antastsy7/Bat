@@ -30,3 +30,19 @@ void USavetxt::SaveTxt(FString SaveTextB, FString FileNameB)
 		FFileHelper::SaveStringToFile(SaveTextB, *AbsoluteFilePath);
 	}
 }
+
+float USavetxt::ChangeVal(float value, float addon, float threshold, bool greater)
+{
+	if (greater) {
+		return value + addon > threshold ? threshold : value + addon;
+	}
+	else {
+		return value - addon < threshold ? threshold : value - addon;
+	}
+}
+
+
+
+//void USavetxt::ChangeVal(float& value, float& const addon, float& const threshold, bool& const greater) {
+//	value = value + addon;
+//}

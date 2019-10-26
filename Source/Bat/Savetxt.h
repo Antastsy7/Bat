@@ -20,6 +20,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Custom", meta = (Keywords = "SaveTxt"))
 
 		static void SaveTxt(FString SaveTextB, FString FileNameB);
+	
+	UFUNCTION(BlueprintCallable, Category = "Custom")
+
+		static float ChangeVal(float value, float addon, float threshold, bool greater);
+
 	GENERATED_BODY()
 	
 };
