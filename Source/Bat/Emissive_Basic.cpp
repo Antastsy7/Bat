@@ -47,19 +47,21 @@ void AEmissive_Basic::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (strength >= 0) {
-		strength -= DeltaTime;
+	strength = strength - DeltaTime * decay;
+	if (strength < 0) {
+		strength = 0;
 	}
 
 	CubeMesh->SetScalarParameterValueOnMaterials("Strength", strength);
-	
 }
 
 void AEmissive_Basic::OnSoundWaveRecieve(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	strength += 1;
-	if (GEngine) {
-		GEngine->AddOnScreenDebugMessage(-1, 1.5f, FColor::White, TEXT("1"), false);
+	if (Activated) {
+		strength = strength + Addon;
+		if (strength > MaxStrength) {
+			strength = MaxStrength;
+		}
 	}
 }
 
