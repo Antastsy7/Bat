@@ -38,7 +38,10 @@ public:
 	void OnSoundWaveRecieve(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 	UPROPERTY(EditAnyWhere)
-		float decay = 2.0f;
+		float strength_decay = 2.0f;
+
+	UPROPERTY(EditAnyWhere)
+		float brightness_decay = 2.0f;
 
 	UPROPERTY(EditAnyWhere)
 		float MaxStrength = 2.0f;
@@ -49,7 +52,17 @@ public:
 	UPROPERTY(EditAnyWhere)
 		bool Activated = true;
 
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite)
+		bool Faded = false;
+
+	UPROPERTY(EditAnyWhere)
+		FName ActorTag = FName("SoundWave");
+
+	UPROPERTY(EditAnyWhere)
+		FName ComponentTag = FName("SoundWave");
+
 private:
-	float strength;
+	float strength = 0.0f;
+	float brightness = 1.0f;
 
 };

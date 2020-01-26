@@ -39,6 +39,8 @@ AEmissive_Basic::AEmissive_Basic()
 void AEmissive_Basic::BeginPlay()
 {
 	Super::BeginPlay();
+	strength = 0;
+	CubeMesh->SetScalarParameterValueOnMaterials("Strength", strength);
 	
 }
 
@@ -47,21 +49,30 @@ void AEmissive_Basic::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	strength = strength - DeltaTime * decay;
+	strength = strength - DeltaTime * strength_decay;
 	if (strength < 0) {
 		strength = 0;
 	}
+	if (Faded){
+		if (brightness >= 0) {
+			brightness -= DeltaTime * brightness;
+		}
+	}
 
 	CubeMesh->SetScalarParameterValueOnMaterials("Strength", strength);
+	CubeMesh->SetScalarParameterValueOnMaterials("Brightness", brightness);
 }
 
 void AEmissive_Basic::OnSoundWaveRecieve(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (Activated) {
-		strength = strength + Addon;
-		if (strength > MaxStrength) {
-			strength = MaxStrength;
+	if (OtherActor->ActorHasTag(ActorTag) || OverlappedComp->ComponentHasTag(ComponentTag)) {
+		if (Activated) {
+			strength = strength + Addon;
+			if (strength > MaxStrength) {
+				strength = MaxStrength;
+			}
 		}
 	}
+	
 }
 
