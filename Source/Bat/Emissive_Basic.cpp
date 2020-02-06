@@ -4,6 +4,7 @@
 #include "Emissive_Basic.h"
 #include "Engine/Engine.h"
 #include "ConstructorHelpers.h"
+#include "SoundWaveBasic.h"
 
 // Sets default values
 AEmissive_Basic::AEmissive_Basic()
@@ -66,8 +67,12 @@ void AEmissive_Basic::Tick(float DeltaTime)
 void AEmissive_Basic::OnSoundWaveRecieve(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	if (OtherActor->ActorHasTag(ActorTag) || OtherComp->ComponentHasTag(ComponentTag)) {
+		ASoundWaveBasic *b = Cast<ASoundWaveBasic>(OtherActor);
+		if (b != nullptr) {
+			Addon = b->Addon;
+		}
 		if (Activated) {
-			strength = strength + Addon;
+			strength += Addon;
 			if (strength > MaxStrength) {
 				strength = MaxStrength;
 			}

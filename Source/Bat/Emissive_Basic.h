@@ -38,7 +38,7 @@ public:
 	void OnSoundWaveRecieve(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 	UPROPERTY(EditAnyWhere)
-		float strength_decay = 2.0f;
+		float strength_decay = 1.0f;
 
 	UPROPERTY(EditAnyWhere)
 		float brightness_decay = 2.0f;
@@ -47,7 +47,7 @@ public:
 		float MaxStrength = 2.0f;
 
 	UPROPERTY(EditAnyWhere)
-		float Addon = 1.5f;
+		float Addon = 1.0f;
 
 	UPROPERTY(EditAnyWhere)
 		bool Activated = true;
