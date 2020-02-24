@@ -36,7 +36,10 @@ public:
 
 	UFUNCTION()
 	void OnSoundWaveRecieve(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-
+	
+	UFUNCTION(BlueprintCallable)
+		void SetStrength(float value);
+	
 	UPROPERTY(EditAnyWhere)
 		float strength_decay = 1.0f;
 

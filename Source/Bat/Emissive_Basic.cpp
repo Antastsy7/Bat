@@ -81,3 +81,8 @@ void AEmissive_Basic::OnSoundWaveRecieve(UPrimitiveComponent* OverlappedComp, AA
 	
 }
 
+void AEmissive_Basic::SetStrength(float value)
+{
+	strength = value;
+}
+
