@@ -39,6 +39,9 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 		void SetStrength(float value);
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void Fade();
 	
 	UPROPERTY(EditAnyWhere)
 		float strength_decay = 1.0f;

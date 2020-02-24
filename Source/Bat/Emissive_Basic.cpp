@@ -56,7 +56,10 @@ void AEmissive_Basic::Tick(float DeltaTime)
 	}
 	if (Faded){
 		if (brightness >= 0) {
-			brightness -= DeltaTime * brightness;
+			brightness -= DeltaTime * brightness_decay;
+		}
+		else {
+			Fade();
 		}
 	}
 
