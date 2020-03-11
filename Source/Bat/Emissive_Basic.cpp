@@ -80,6 +80,7 @@ void AEmissive_Basic::OnSoundWaveRecieve(UPrimitiveComponent* OverlappedComp, AA
 				strength = MaxStrength;
 			}
 		}
+		
 	}
 	
 }
