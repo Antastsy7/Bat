@@ -89,4 +89,3 @@ void AEmissive_Basic::SetStrength(float value)
 {
 	strength = value;
 }
-
