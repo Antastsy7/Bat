@@ -16,13 +16,13 @@ AEmissive_Basic::AEmissive_Basic()
 	RootComponent = CubeRoot;
 	
 	CubeMesh = CreateAbstractDefaultSubobject<UStaticMeshComponent>(TEXT("CubeMesh"));
-	CubeMesh->SetupAttachment(CubeRoot);
+	CubeMesh->AttachToComponent(CubeRoot, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 
 	Collision = CreateAbstractDefaultSubobject<UBoxComponent>(TEXT("Collision"));
 	Collision->SetGenerateOverlapEvents(true);
 	Collision->SetWorldScale3D(FVector(2.0f, 2.0f, 2.0f));
 	Collision->OnComponentBeginOverlap.AddDynamic(this, &AEmissive_Basic::OnSoundWaveRecieve);
-	Collision->SetupAttachment(CubeRoot);
+	Collision->AttachToComponent(CubeRoot, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 
 	strength = 1.0f;
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> CylinderAsset(TEXT("/Game/Geometry/Emssive.Emssive"));
