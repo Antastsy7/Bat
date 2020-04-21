@@ -14,3 +14,4 @@ build
 *.suo
 *.xcodeproj
 *.xcworkspace
+TestBuild/WindowsNoEditor.7z
